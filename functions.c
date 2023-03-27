@@ -111,14 +111,12 @@ int _print_binary(va_list ls)
 	}
 	
 	i = 0;
-
 	while (n > 0)
 	{
 		binaryNum[i++] = n % 2;
 		n /= 2;
 	}
-	
-	for (j = i-1; j >= 0; j--)
+	for (j = i - 1; j >= 0; j--)
 	{
 		pr = binaryNum[j] + '0';
 		write(1, &pr, 1);
