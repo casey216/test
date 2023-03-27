@@ -111,7 +111,7 @@ int _print_binary(va_list ls)
 	}
 	
 	i = 0;
-   
+
 	while (n > 0)
 	{
 		binaryNum[i++] = n % 2;
