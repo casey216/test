@@ -100,6 +100,7 @@ int _print_binary(va_list ls)
 {
 	unsigned int n, i;
 	int j, count, binaryNum[32];
+	char pr;
 	
 	n = va_arg(ls, unsigned int);
 	
