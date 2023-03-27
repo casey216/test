@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 /**
- * struct intface - interface for printing
+ * struct specifier - interface for printing
  * @id: the character, which identifies the type of
  * the argument
  * @fn: function to run if id matches
@@ -15,7 +15,7 @@ typedef struct specifier
 {
 	char id;
 	int (*fn)(va_list);
-} specifiers;
+} interface;
 
 int _printf(const char *format, ...);
 int _print_char(va_list ls);
