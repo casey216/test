@@ -24,14 +24,10 @@ int _printf(const char *format, ...)
 		{'b', _print_binary},
 		{'\0', NULL}
 	};
-	
-	if (format == NULL)
-		return (-1);
 	if (!format || (format[0] == '%' && !format[1]))
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
-
 	va_start(lst, format);
 	for (i = 0; format[i]; i++)
 		if (format[i] == '%')
