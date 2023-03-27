@@ -2,25 +2,25 @@
 #include <stdio.h>
 
 /**
- * _printf - takes a string and args of each '%'
- * and prints them
- * @format: initial string containing % +
- * char denoting type and number of args
- * @...: variable list of arguments
+ * _printf - produces output according to a format
  *
- * Return: number of characters printed.
+ * @format: character string. It is composed of
+ * zero or more directives.
+ *
+ * Return: The number of char printed.
  */
+
 int _printf(const char *format, ...)
 {
 	int i, j;
 	int count = 0;
 	va_list lst;
-	interface ids[] = {
+	specifiers ids[] = {
 		{'c', _print_char},
 		{'s', _print_string},
+		{'%', _print_mod},
 		{'i', _print_int},
 		{'d', _print_int},
-		{'%', _print_mod},
 		{'\0', NULL}
 	};
 
