@@ -103,7 +103,6 @@ int _print_binary(va_list ls)
 	char pr;
 	
 	n = va_arg(ls, unsigned int);
-	
 	if (n == 0)
 	{
 		pr = 0 + '0';
