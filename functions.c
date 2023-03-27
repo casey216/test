@@ -98,9 +98,8 @@ int _print_int(va_list ls)
  */
 int _print_binary(va_list ls)
 {
-	unsigned int n, i, j;
-	int binaryNum[32];
-	int count;
+	unsigned int n, i;
+	int j, count, binaryNum[32];
 	
 	n = va_arg(ls, unsigned int);
 	
