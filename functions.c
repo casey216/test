@@ -117,13 +117,13 @@ int _print_binary(va_list ls)
 		binaryNum[i++] = n % 2;
 		n /= 2;
 	}
-   
+	
 	for (j = i-1; j >= 0; j--)
 	{
 		pr = binaryNum[j] + '0';
 		write(1, &pr, 1);
 		count++;
 	}
-	
+
 	return (count);
 }
