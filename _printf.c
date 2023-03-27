@@ -39,7 +39,7 @@ int _printf(const char *format, ...)
 				_putchar(va_arg(args, int));
 				sizemod -= 1;
 			}
-			if (format[i] == 'd')
+			if (format[i] == 'd' || format[i] == 'i')
 				sizemod += print_decimal(va_arg(args, int));
 			if (format[i] == 's')
 				sizemod += print_string(va_arg(args, char *));
