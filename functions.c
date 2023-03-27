@@ -98,29 +98,28 @@ int _print_int(va_list ls)
  */
 int _print_binary(va_list ls)
 {
-	unsigned int n, i;
-	int j, count, binaryNum[32];
-	char pr;
+	unsigned int n, m, i, sum;
+	unsigned int a[32];
+	int count;
 
 	n = va_arg(ls, unsigned int);
-	if (n == 0)
+	m = 2147483648; /* (2 ^ 31) */
+	a[0] = n / m;
+	for (i = 1; i < 32; i++)
 	{
-		pr = 0 + '0';
-		write(1, &pr, 1);
-		count = 1;
+		m /= 2;
+		a[i] = (n / m) % 2;
 	}
-	i = 0;
-	while (n > 0)
+	for (i = 0, sum = 0, count = 0; i < 32; i++)
 	{
-		binaryNum[i++] = n % 2;
-		n /= 2;
-	}
-	for (j = i - 1; j >= 0; j--)
-	{
-		pr = binaryNum[j] + '0';
-		write(1, &pr, 1);
-		count++;
-	}
+		sum += a[i];
+		if (sum || i == 31)
+		{
+			char z = '0' + a[i];
 
+			write(1, &z, 1);
+			count++;
+		}
+	}
 	return (count);
 }
