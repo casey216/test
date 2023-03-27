@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
 	int i, j;
 	int count = 0;
 	va_list lst;
-	specifiers ids[] = {
+	interface ids[] = {
 		{'c', _print_char},
 		{'s', _print_string},
 		{'%', _print_mod},
