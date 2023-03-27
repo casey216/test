@@ -101,7 +101,6 @@ int _print_binary(va_list ls)
 	unsigned int n, i;
 	int j, count, binaryNum[32];
 	char pr;
-	
 	n = va_arg(ls, unsigned int);
 	if (n == 0)
 	{
@@ -109,7 +108,6 @@ int _print_binary(va_list ls)
 		write(1, &pr, 1);
 		count = 1;
 	}
-	
 	i = 0;
 	while (n > 0)
 	{
