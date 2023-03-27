@@ -11,11 +11,11 @@
  * the argument
  * @fn: function to run if id matches
  */
-typedef struct intface
+typedef struct specifier
 {
 	char id;
 	int (*fn)(va_list);
-} interface;
+} specifiers;
 
 int _printf(const char *format, ...);
 int _print_char(va_list ls);
