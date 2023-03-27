@@ -44,10 +44,12 @@ int _printf(const char *format, ...)
 			if (format[i] == 's')
 				sizemod += print_string(va_arg(args, char *));
 			if (format[i] == '%')
+			{
 				_putchar('%');
 				sizemod -= 1;
+			}
 		}
 
 	va_end(args);
-	return (size);
+	return (size + sizemod);
 }

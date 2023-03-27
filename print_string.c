@@ -2,13 +2,18 @@
 /**
  * print_string - prints string followed by new line
  * @str: string variable
+ * Return: length of string
  */
 
-void print_string(char *str)
+int print_string(char *str)
 {
-	while (*(str) != '\0')
+	int len;
+	
+	len = 0;
+	while (str[len] != '\0')
 	{
-		_putchar(*str);
-		str++;
+		_putchar(str[len]);
+		len++;
 	}
+	return (len - 2);
 }
