@@ -98,7 +98,7 @@ int _print_int(va_list ls)
  */
 int _print_binary(va_list ls)
 {
-	unsigned int n, i;
+	unsigned int n, i, j;
 	int binaryNum[32];
 	int count;
 	
@@ -119,7 +119,7 @@ int _print_binary(va_list ls)
 		n /= 2;
 	}
    
-	for (int j = i-1; j >= 0; j--)
+	for (j = i-1; j >= 0; j--)
 	{
 		pr = binaryNum[j] + '0';
 		write(1, &pr, 1);
