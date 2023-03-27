@@ -4,7 +4,7 @@
 int _printf(const char *format, ...);
 int _strlen(const char *str);
 int _putchar(char c);
-void print_decimal(int n);
-void print_string(char *str);
+int print_decimal(int n);
+int print_string(char *str);
 
 #endif

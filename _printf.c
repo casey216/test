@@ -13,8 +13,10 @@
 
 int _printf(const char *format, ...)
 {
-	int size, i;
+	int size, i, sizemod;
 	va_list args;
+
+	sizemod = 0;
 
 	if (format == NULL)
 		return (-1);
@@ -33,13 +35,17 @@ int _printf(const char *format, ...)
 		{
 			i++;
 			if (format[i] == 'c')
+			{
 				_putchar(va_arg(args, int));
+				sizemod -= 1;
+			}
 			if (format[i] == 'd')
-				print_decimal(va_arg(args, int));
+				sizemod += print_decimal(va_arg(args, int));
 			if (format[i] == 's')
-				print_string(va_arg(args, char *));
+				sizemod += print_string(va_arg(args, char *));
 			if (format[i] == '%')
 				_putchar('%');
+				sizemod -= 1;
 		}
 
 	va_end(args);
