@@ -8,7 +8,7 @@
  * @format: character string. It is composed of
  * zero or more directives.
  *
- * Return: The number of char printed. 
+ * Return: The number of char printed.
  */
 
 int _printf(const char *format, ...)
@@ -37,11 +37,11 @@ int _printf(const char *format, ...)
 			if (format[i] == 'd')
 				print_decimal(va_arg(args, int));
 			if (format[i] == 's')
-                                print_string(va_arg(args, char *));
+				print_string(va_arg(args, char *));
 			if (format[i] == '%')
-                                _putchar('%');
+				_putchar('%');
 		}
 
 	va_end(args);
-	return size;
+	return (size);
 }

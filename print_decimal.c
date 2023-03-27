@@ -1,7 +1,9 @@
 #include "main.h"
 
 /**
+ * print_decimal - prints decimal numbers
  *
+ * @n: decimal number
  */
 
 void print_decimal(int n)

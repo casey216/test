@@ -1,5 +1,7 @@
 /**
+ * _strlen - returns the length of a string
  *
+ * @str: string variable
  */
 
 int _strlen(const char *str)
