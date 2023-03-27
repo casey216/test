@@ -2,53 +2,90 @@
 #include <stdio.h>
 
 /**
- * _printf - takes a string and args of each '%'
- * and prints them
- * @format: initial string containing % +
- * char denoting type and number of args
- * @...: variable list of arguments
+ * _print_char - prints character from the corresponging
+ * argument from the arguments list
+ * @ls: list of arguments, va_list
  *
- * Return: number of characters printed.
+ * Return: the number of printed chars, int
  */
-int _printf(const char *format, ...)
+int _print_char(va_list ls)
 {
-	int i, j;
-	int count = 0;
-	va_list lst;
-	interface ids[] = {
-		{'c', _print_char},
-		{'s', _print_string},
-		{'i', _print_int},
-		{'d', _print_int},
-		{'%', _print_mod},
-		{'\0', NULL}
-	};
+	char c = va_arg(ls, int);
 
-	va_start(lst, format);
-	for (i = 0; format[i]; i++)
-		if (format[i] == '%')
-		{
-			i++;
-			for (; format[i] != '\0'; i++)
-			{
-				for (j = 0; ids[j].id != '\0'; j++)
-					if (format[i] == ids[j].id)
-					{
-						count += ids[j].fn(lst);
-						break;
-					}
-				if (ids[j].id)
-					break;
-			}
-			if (format[i] == '\0')
-				return (-1);
-		}
-		else
-		{
-			write(1, &format[i], 1);
-			count += 1;
-		}
+	write(1, &c, 1);
+	return (1);
+}
 
-	va_end(lst);
+/**
+ * _print_mod - prints "%" character
+ * @ls: list of arguments, va_list
+ *
+ * Return: the number of printed chars, int
+ */
+int _print_mod(va_list ls)
+{
+	char c = '%';
+
+	(void) ls;
+
+	write(1, &c, 1);
+	return (1);
+}
+
+/**
+ * _print_string - prints the string, char by char
+ * @ls: list of arguments, va_list
+ *
+ * Return: the number of printed chars, int
+ */
+int _print_string(va_list ls)
+{
+	int i, count = 0;
+	char *sbuf = va_arg(ls, char *);
+
+	if (sbuf == NULL)
+		sbuf = "(null)";
+
+	for (i = 0; sbuf[i]; i++)
+	{
+		write(1, &sbuf[i], 1);
+		count += 1;
+	}
+
 	return (count);
+}
+
+/**
+ * _print_int - prints a decimal integer
+ * @ls: list of arguments, va_list
+ *
+ * Return: the number of printed chars, int
+ */
+int _print_int(va_list ls)
+{
+	int a, expo = 1, len = 0;
+	unsigned int n;
+	char pr;
+
+	a = va_arg(ls, int);
+
+	if (a < 0)
+	{
+		pr = '-';
+		len = len + write(1, &pr, 1);
+		n = a * -1;
+	}
+	else
+		n = a;
+	while (n / expo > 9)
+		expo *= 10;
+
+	while (expo != 0)
+	{
+		pr = n / expo + '0';
+		len = len + write(1, &pr, 1);
+		n = n % expo;
+		expo = expo / 10;
+	}
+	return (len);
 }
